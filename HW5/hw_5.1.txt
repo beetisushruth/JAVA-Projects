@@ -1,0 +1,131 @@
+Output:
+
+1: 
+	C: 100
+	C: 100
+	C: 100
+	1
+	2
+	100
+2: 
+	C: 44
+	C: 44
+	C: 44
+	42
+	2
+	44
+3: 
+	C: 44
+	C: 44
+	C: 44
+	42
+	43
+	44
+	
+Explanation:
+
+1) aC = new C();
+   A new Class C object is created. C inherits B which inherits A. 
+   Order of constructor calls:
+   	Class C
+   	Class B
+   	Class A
+   	Class Object
+   Order of constructor execution:
+   	Class Object
+   	Class A
+   	Class B
+   	Class C
+  aC now inherits all the public and protected variables from it's parent classes.
+  aInstance from class A is  now set to 1
+  aInstance from class B is  now set to 2
+  aInstance from class C is  now set to 3
+  
+2) aB = new B();
+   A new Class B object is created. B inherits A. 
+   Order of constructor calls:
+   	Class B
+   	Class A
+   	Class Object
+   Order of constructor execution:
+   	Class Object
+   	Class A
+   	Class B
+  aB now inherits all the public and protected variables from it's parent classes.	
+  aInstance from class A is  now set to 1
+  aInstance from class B is  now set to 2
+  
+3) aA = new A();
+   A new Class A object is created
+   Order of constructor calls:
+   	Class A
+   	Class Object
+   Order of constructor execution:
+   	Class Object
+   	Class A
+   aInstance from class A is  now set to 1
+   
+aB = (B)aC;
+aB now has the value of upcasted aC object. That means it can only access the methods that are common 
+in Class C and Class B.
+
+aB.aInstanceIntSet(200);
+will call the common method aInstanceIntSet in class C, and set the aInstance to 200
+
+aA   = (A)aB;
+TypeCased aB to (A) is set in aA, which is class C object but the scope of methods is now decreased to common 
+methods in class A
+
+aA.aInstanceIntSet(100);
+
+changes the aInstanceInt TO 100
+
+print("1: ")
+ print method is called
+ 
+ public static void print(String location)       {
+          23                      System.out.println(location);
+          24                      System.out.println("    " + aA);
+          25                      System.out.println("    " + aB);
+          26                      System.out.println("    " + aC);
+          27                      System.out.println("    " + aA.aInstanceInt);
+          28                      System.out.println("    " + aB.aInstanceInt);
+          29                      System.out.println("    " + aC.aInstanceInt);
+          30              }
+toString method of Class C is called for the first three print statements, since it is the object of 
+Class C and it has just been upcasted nothing else.
+which will print out C: 100
+aA.aInstanceInt will reference the A's class variable which unchanged since object creation
+aB.aInstanceInt will reference the B's class variable which unchanged since object creation
+aC.aInstanceInt will reference the C's class variable which was 100 after we changed it.
+
+aA.aInstanceInt = 42;
+aC.aInstanceInt = 44;
+
+aInstanceInt class variable of class A will change to 42
+aInstanceInt class variable of class C will change to 44
+ 
+So this time
+2: 
+	C: 44
+	C: 44
+	C: 44
+	42
+	2
+	44
+will get printed
+
+aB.aInstanceInt = 43;
+aInstanceInt class variable of class B will change to 43
+
+so ,
+3: 
+	C: 44
+	C: 44
+	C: 44
+	42
+	43
+	44
+	
+will get printed
+
