@@ -1,0 +1,53 @@
+Class GenericQ:
+
+Contains 3 methods:
+1.private static void m1(MyStack<? extends A3> aStack): 
+
+Takes arguments in the form of a stack Mystack that accepts the object of the type that is a subclass of A3 or itself referred to as "aStack". In this case, since no other class extends A3, only A3 would be accepted.
+
+2.private static void m2(MyStack<?> aStack): 
+
+Takes arguments in the form of a stack Mystack that accepts any object of MyStack and is referred to as "aStack". Unbounded wildcard
+
+3.private static void m3(MyStack<? super A3> aStack):
+
+Takes arguments in the form of a stack Mystack that accepts the object of the type that is a parent of A3 or itself referred to as "aStack". In this case, it can accept objects of type A3, A2, A1.
+
+
+
+public static void testMyStack() method:
+8 objects were created:
+1.aMyStack: Of type Mystack that accepts an Integer object.
+
+2.aVector: Of type Vector which contains a Mystack that holds an Integer object.
+
+3.bMyStack: Of type Mystack which contains a Mystack that holds an Integer object.
+
+4.bVector: Of type Vector which contains a Mystack which contains a Mystack that holds an Integer object.
+
+5. aA1: Of type Mystack that contains objects of type A1.
+6.aA2: Of type Mystack that contains objects of type A2.
+7.aA3: Of type Mystack that contains objects of type A3.
+8.aA4: Of type Mystack that contains objects of type A4.
+
+
+
+Completion of method calls m[123]:
+m1(A3)
+m2(A1)
+m2(A2)
+m2(A3)
+m2(A4)
+m3(A1)
+m3(A2)
+
+Further:
+aMystack is added to aVector
+bMystack is added to bVector
+
+
+
+
+
+
+

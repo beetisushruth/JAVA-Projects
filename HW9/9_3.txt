@@ -1,0 +1,22 @@
+noSystemExit method would create compilation error because:
+1) First try block is processed and error is thrown there and immediately the catch is called, which prints "2" and returns 0
+2) Which makes the return block after finally unreachable.
+
+noException method execution:
+1) First try block is executed. Prints inside try: 1, catch is not executed. 
+2) Finally block is executed and prints "inside finally: 3". And returns 3.
+
+anException1 method execution:
+1) an exception occurs in the try block. Then execution in the catch block starts
+2) an exception in the catch block occurs and control is passed on to the finally block.
+3) Finally block prints inside finally 3 and returns 2, since it is returning 2, exception is swallowed
+
+An Exception2 method execution:
+1) An exception in the try block occurs, control is  not passed on to the catch
+2) Because the it is not catching the ArrayIndexOutOfBoundsException
+3) finally blocks starts executing, prints "inside finally: 3") and returns 2 which makes the exception to get discarded
+
+withSystemExit method execution:
+1) an exception occurs in the try block control is passed on to the catch block
+2) 5 is printed and exited 
+3) Program ends then and there.
