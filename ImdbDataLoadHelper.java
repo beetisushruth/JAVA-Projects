@@ -371,11 +371,11 @@ public class ImdbDataLoadHelper {
 	public static void main(String[] args) {
 		// change file path accordingly
 		String filePath = "/Users/sushruth/Documents/MS/CSCI620/title.basics.tsv";
-		insertTitles(filePath, TITLE_SQL, 1000000, true);
-		insertPersons(filePath, PERSON_SQL, 1000000, true);
-		insertPersonsInTitle(filePath, TITLE_PERSON_SQL, 1000000, true);
-		insertEpisodes(filePath, EPISODE_SQL, 100000, true);
-		insertTitleRatings(filePath, TITLE_RATING_SQL, 100000, true);
+		insertTitles(filePath, TITLE_SQL, 1000000, true);	// time taken 5.30 minutes
+		insertPersons(filePath, PERSON_SQL, 1000000, true);     // time taken 5.45 mintues
+		insertPersonsInTitle(filePath, TITLE_PERSON_SQL, 1000000, true); // time taken 54.30 minutes
+		insertEpisodes(filePath, EPISODE_SQL, 100000, true);		 // time taken ~ 3 minutes 
+		insertTitleRatings(filePath, TITLE_RATING_SQL, 100000, true);    // time taken ~ 5 minutes
 		transact(PERSON_SQL, PERSON_SQL);
 
 	}
